@@ -7,13 +7,14 @@ const cors = require('cors');
 const authRouter = require('./auth-router');
 const userRouter = require('./user-router');
 
-Server.use(helmet());
+const server = express();
+
+server.use(helmet());
 server.use(express.json());
 server.use(cors());
 
-server.use('/api', userRouter)
-// Not sure if this is need below.
-server.use('/api', authRouter)
+server.use('/api', userRouter);
+server.use('/api', authRouter);
 
 // Test route
 server.get('/', (req, res) => {
