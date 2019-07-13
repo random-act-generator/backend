@@ -3,18 +3,6 @@ const Users = require('./user-model.js');
 
 const restricted = require('./restricted-middleware.js');
 
-/*
-router.get('/users', restricted, (req, res) => {
-    Users.get()
-        .then(users => {
-            res.json(users)
-        })
-        .catch(err => {
-            res.send(err)
-        });
-});
-*/
-
 router.get('/users', restricted, (req, res) => {
     Users.get()
         .then(users => {
