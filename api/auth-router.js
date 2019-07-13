@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 // Went ahead and made the connections here make sure evrything works fine on your end.
-const secret = require('../config/secrets.js')
-const db = require('../data/dbConfig.js');
+const secrets = require('../config/secrets.js')
+//const db = require('../data/dbConfig.js');
 
 
 // Register endpoint
@@ -27,21 +27,21 @@ router.post('/register', (req, res) => {
 
 // Login endpoint
 router.post('/login', (req, res) => {
-    const { username, password, email } = req.body;
+    const { username, password } = req.body;
 
-    db('users')
-        .where({ username })
+    Auth.findBy({ username })
         .first()
         .then(user => {
             if (user && bcrypt.compareSync(password, user.password)) {
                 const token = generateToken(user);
-                res.status(200).json({ message: `Welcome back ${user.username}`, token });
+
+                res.status(200).json({ message: `Welcome ${user.username}!`, token });
             } else {
-                res.status(401).json({ message: "Invalid Credentials" });
+                res.status(401).json({ message: "You shall not pass!" });
             }
         })
-        .catch(err => {
-            res.status(500).json(err);
+        .catch(error => {
+            res.status(500).json({ message: "We ran into an error retreving the specified request." });
         });
 });
 
@@ -50,14 +50,13 @@ function generateToken(user) {
     const payload = {
         subject: user.id,
         username: user.username,
-        roles: ["user"]
+        email: user.email,
     };
-
     const options = {
-        expiresIn: "1d"
+        expiresIn: '1h',
     };
 
-    return jwt.sign(payload, secret, options);
+    return jwt.sign(payload, secrets.jwtSecret, options);
 };
 
 module.exports = router;
