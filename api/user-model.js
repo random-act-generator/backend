@@ -5,7 +5,7 @@ module.exports = {
   get,
   getBy,
   getById
-}
+};
 
 async function add(user) {
   const id = await db('users').insert(user);
