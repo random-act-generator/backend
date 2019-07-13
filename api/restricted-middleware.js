@@ -1,9 +1,11 @@
 const jwt = require('jsonwebtoken');
-
+const bcrypt = require('bcryptjs');
 const secrets = require('../config/secrets.js');
 
+const Users = require('./user-model');
+
 module.exports = (req, res, next) => {
-    const token = req.req.headers.Authorization;
+    const token = req.headers.Authorization;
 
     jwt.verify(token, secrets.jwtSecret, (err, decodedToken) => {
         if (err) {

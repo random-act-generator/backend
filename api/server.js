@@ -15,7 +15,7 @@ server.use(express.json());
 server.use(cors());
 server.use(logger('dev'));
 
-
+server.use('/api', userRouter)
 server.use('/api', authRouter);
 
 // Test route

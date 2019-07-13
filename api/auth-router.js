@@ -27,7 +27,7 @@ router.post('/register', (req, res) => {
 
 // Login endpoint
 router.post('/login', (req, res) => {
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
 
     db('users')
         .where({ username })
