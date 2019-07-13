@@ -5,6 +5,10 @@
   "repository": "https://github.com/random-act-generator/randonActGenerator-BE.git",
   "author": "Christian-Ford <fjord.christian@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node index.js",
+    "server": "nodemon index.js"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

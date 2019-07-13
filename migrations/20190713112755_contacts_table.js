@@ -1,19 +1,19 @@
 
 exports.up = function(knex, Promise) {
-  return knex.schema.createTable('users', users => {
-    users
+  return knex.schema.createTable('contacts', contacts => {
+    contacts
       .increments();
 
-    users 
+    contacts 
       .string('username', 128)
       .notNullable()
       .unique();
 
-    users
+    contacts
       .string('contactName', 128)
       .notNullable();
 
-    users
+    contacts
       .string('contactEmail', 128)
       .notNullable()
       
@@ -21,5 +21,5 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTableIfExists('users');
+  return knex.schema.dropTableIfExists('contacts');
 };
