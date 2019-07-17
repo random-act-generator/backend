@@ -4,22 +4,20 @@ exports.up = function (knex, Promise) {
             .increments();
 
         contacts
-            .string('username', 128)
+            .string('name', 128)
             .notNullable()
             .unique();
 
         contacts
-            .string('userEmail', 128)
+            .string('phoneNumber', 128)
             .notNullable()
             .unique();
 
         contacts
-            .string('contactName', 128)
-            .notNullable();
-
-        contacts
-            .string('contactEmail', 128)
+            .string('email', 128)
             .notNullable()
+            .unique();
+
 
     })
 };
