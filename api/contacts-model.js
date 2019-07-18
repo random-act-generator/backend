@@ -7,23 +7,24 @@ module.exports = {
     getById
 };
 
-async function add(user) {
-    const id = await db('users').insert(user);
-    return id;
+async function add(contact) {
+    const [id] = await db('contacts').insert(contact);
+
+    return getById(id);
 }
 
 function get() {
-    return db('')
-        .select('id', 'username', 'email');
+    return db('contacts')
+        .select('id', 'name', 'phoneNumber', 'email');
 }
 
 function getBy(filter) {
-    return db('users')
+    return db('contacts')
         .where(filter);
 }
 
 function getById(id) {
-    return db('users')
+    return db('contacts')
         .where({ id })
         .first();
 }
