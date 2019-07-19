@@ -4,7 +4,9 @@ module.exports = {
     add,
     get,
     getBy,
-    getById
+    getById,
+    update,
+    remove,
 };
 
 async function add(contact) {
@@ -27,4 +29,24 @@ function getById(id) {
     return db('contacts')
         .where({ id })
         .first();
+}
+
+
+function update(id, changes) {
+    return db('contacts')
+        .where({ id })
+        .update(changes)
+        .then(count => {
+            if (count > 0) {
+                return findById(id);
+            } else {
+                return null;
+            }
+        });
+}
+
+function remove(id) {
+    return db('contacts')
+        .where({ id })
+        .del();
 }
