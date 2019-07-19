@@ -25,7 +25,7 @@ router.post('/contacts', (req, res) => {
         });
 });
 
-// update contacts: put updates but getting a 404 still
+// update contacts
 router.put('/contacts/:id', (req, res) => {
     Contacts.update(req.params.id, req.body)
 
