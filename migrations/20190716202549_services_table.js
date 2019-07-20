@@ -1,14 +1,14 @@
 exports.up = function (knex, Promise) {
   return knex.schema.createTable('services', services => {
-      services
-          .increments();
+    services
+      .increments();
 
-      services
-          .string('service', 128)
-          .notNullable()
-          .unique();
+    services
+      .string('service', 128)
+      .notNullable()
+      .unique();
 
-      
+
 
 
   })

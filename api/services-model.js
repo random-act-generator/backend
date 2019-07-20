@@ -17,7 +17,7 @@ async function add(service) {
 
 function get() {
     return db('services')
-        .select('services');
+        .select('id', 'service');
 }
 
 function getBy(filter) {
