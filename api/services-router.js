@@ -5,8 +5,9 @@ const Services = require('./services-model.js');
 router.get('/services', (req, res) => {
     Services.get()
         .then(services => {
-            res.status(201).json(services)
+            res.status(201).json(services);
         })
+        
         .catch(err => {
             res.status(404).json({ message: "Please try again" });
         });
@@ -16,7 +17,7 @@ router.get('/services', (req, res) => {
 router.post('/services', (req, res) => {
     let newService = req.body;
 
-    Contacts.add(newService)
+    Services.add(newService)
         .then(service => {
             res.status(201).json(service);
         })
@@ -41,7 +42,7 @@ router.put('/services/:id', (req, res) => {
 router.delete('/services/:id', (req, res) => {
     let deleteService = req.params.id;
 
-    Contacts.remove(deleteService)
+    Services.remove(deleteService)
         .then(deleted => {
             res.status(201).json(deleted);
         })
