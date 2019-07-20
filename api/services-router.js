@@ -38,7 +38,8 @@ router.put('/services/:id', (req, res) => {
         });
 });
 
-// delete services
+/* delete services
+
 router.delete('/services/:id', (req, res) => {
     let deleteService = req.params.id;
 
@@ -50,5 +51,5 @@ router.delete('/services/:id', (req, res) => {
             res.status(404).json(err);
         });
 });
-
+*/
 module.exports = router;
