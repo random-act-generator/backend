@@ -22,9 +22,9 @@ server.use('/api', authRouter);
 server.use('/api', contactsRouter);
 server.use('/api', servicesRouter);
 
-/* Test route
+// Test route
 server.get('/', (req, res) => {
     res.send("<h1>Test works</h1>");
 });
-*/
+
 module.exports = server;
