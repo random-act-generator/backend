@@ -7,6 +7,7 @@ const logger = require('morgan');
 // Connect to routers
 const authRouter = require('./auth-router');
 const userRouter = require('./user-router');
+const contactsRouter = require('./contacts-router');
 
 const server = express();
 
@@ -17,6 +18,7 @@ server.use(logger('dev'));
 
 server.use('/api', userRouter)
 server.use('/api', authRouter);
+server.use('/api', contactsRouter);
 
 // Test route
 server.get('/', (req, res) => {
